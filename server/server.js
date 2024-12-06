@@ -8,7 +8,11 @@ const app = express();
 
 // Middleware
 app.use(compression());
-app.use(cors());
+
+app.use(cors({
+  methods: ["POST", "GET"],
+  credentials: true
+}));
 app.use(express.static('public'));
 
 // Routes
