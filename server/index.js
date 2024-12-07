@@ -28,7 +28,7 @@ app.get('/scrape', async (req, res) => {
     res.status(500).send('Error fetching Instagram data');
   }
 });
-app.get("/check", (req,res)=>{
+app.get("/", (req,res)=>{
   res.send("This is a Backend")
 })
 
