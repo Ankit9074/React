@@ -28,9 +28,7 @@ app.get('/scrape', async (req, res) => {
     res.status(500).send('Error fetching Instagram data');
   }
 });
-app.get("/", (req,res)=>{
-  res.send("This is a Backend")
-})
+
 
 // Scrape Instagram profile data
 async function getProfileData(username) {
