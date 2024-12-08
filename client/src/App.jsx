@@ -3,20 +3,20 @@ import { BrowserRouter as Router, Route, Routes, useNavigate } from 'react-route
 import Profile from './Profile';  
 import Payment from './PaymentData';
 import './App.css';
-// import { config } from 'dotenv';
+
 function Home() {
   const [username, setUsername] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const navigate = useNavigate();
-  console.log("env", process.env.REACT_APP_BASEURL)
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
     setError('');
+
     try {
-      const response = await fetch(`${ process.env.REACT_APP_BASEURL}/scrape?username=${encodeURIComponent(username)}`);
+      const response = await fetch(`http://localhost:3000/scrape?username=${encodeURIComponent(username)}`);
       if (!response.ok) throw new Error('Failed to fetch data');
       const data = await response.json();
       navigate('/profile', { state: { profile: data } }); // Pass profile data to Profile component
@@ -44,7 +44,7 @@ function Home() {
       {loading && <div className="loader">Loading...</div>}
       {error && <p className="error-message">{error}</p>}
     </div>
-    <div className="image-container">
+    <div class="image-container">
     <img src="./image/proof.jpg" alt="hero Image"/>
     <img src="./image/proof2.jpg" alt="Hero Image"/>
   </div>  
